@@ -8,84 +8,153 @@ namespace HumanResources2
         {
             while (true)
             {
-                HumanResources firstPerson = new HumanResources(HumanResources.Name("Name :"), HumanResources.Surname("Surname :"));
+
+
+                while (true)
+                {
+
+
+                    Console.Write("Adinizi Daxil edin :");
+                    string targetName = Console.ReadLine();
+                    string result = Human.Name(targetName);
+                    break;
+
+
+
+                }
+                while (true)
+                {
+                    Console.Write("Soyadinizi Daxil edin :");
+                    string targetSurname = Console.ReadLine();
+                    string resultSurname = Human.Surname(targetSurname);
+                    break;
+
+                }
+                while (true)
+                {
+                    Console.Write("Atanizin Adini Daxil edin :");
+                    string targetFatherName = Console.ReadLine();
+                    string resultFatherName = Human.Father(targetFatherName);
+                    break;
+                }
+                while (true)
+                {
+                    Console.Write("Fincodunuzu Daxil edin :");
+                    string FinCode = Console.ReadLine();
+                    string resultFinCode = Human.Fincode(FinCode);
+                    break;
+                }
             }
+
+
         }
+
+
     }
 }
-class HumanResources
+
+class Human
 {
     public string _name;
     public string _surname;
-    public string _fathersName;
-    public string _finCode;
-    public string _position;
-    public int _phoneNumber;
-    public int _salayr;
-    public int _age;
+    public string _FaterName;
+    public string _Fincode;
 
-    public HumanResources(string name, string surname, string fathersname, string fincode, string position, int phonenumber, int salary, int age)
+    public Human(string name , string surname,string father,string fincode)
     {
         _name = name;
         _surname = surname;
-        _fathersName = fathersname;
-        _finCode = fincode;
-        _position = position;
-        _phoneNumber = phonenumber;
-        _salayr = salary;
-        _age = age;
-    }
-    public HumanResources(string name, string surname)
-    {
-        this._name = name;
-        this._surname = surname;
+        _FaterName = father;
+        _Fincode = fincode;
     }
 
-    public static string Name(string name)
+    public static string Name(string targetName)
     {
-        while (true)
+        char[] TargetSmallLetter = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
+                'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+        for (int i = 0; i < TargetSmallLetter.Length; i++)
         {
-            Console.Write("Name :");
-            string targetName = Console.ReadLine();
-            char[] TargetSmallLetter = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
-            for (int i = 0; i < TargetSmallLetter.Length; i++)
+            if (targetName[0] == TargetSmallLetter[i])
             {
-                if (targetName[0] == TargetSmallLetter[i])
-                {
-                    Console.WriteLine("Your format Incorrect");
-                    break;
-                }
-                else if (targetName.Length > 20 || targetName.Length < 2)
-                {
-                    Console.WriteLine("Your Format Incorrect");
-                    break;
-                }
+                Console.WriteLine($"Adin ({targetName}) Bas Herifi Boyuk Olmalidir");
+                Console.WriteLine(targetName);
+                break;
+            }
+            else if (targetName.Length > 20 || targetName.Length <= 2)
+            {
+                Console.WriteLine($"Adin ({targetName}) Uzunluqu sehfdir");
+                Console.WriteLine(targetName);
+                break;
+            }
+        }
+        return targetName;
+    }
+    public static string Surname(string targetSurname)
+    {
+        char[] TargetSmallLetter = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
+                'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
 
-            }
-            return name;
-        }
-    }
-    public static string Surname(string surname)
-    {
-        while (true)
+        for (int i = 0; i < TargetSmallLetter.Length; i++)
         {
-            Console.Write("Surename :");
-            string targetName = Console.ReadLine();
-            char[] TargetSmallLetter = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
-            for (int i = 0; i < TargetSmallLetter.Length; i++)
+            if (targetSurname[0] == TargetSmallLetter[i])
             {
-                if (targetName[0] == TargetSmallLetter[i])
-                {
-                    Console.WriteLine("Your format Incorrect");
-                    break;
-                }
-                else if (targetName.Length > 20 || targetName.Length < 2)
-                {
-                    Console.WriteLine("Your Format Incorrect");
-                    break;
-                }
+                Console.WriteLine($"Soyadinizin ({targetSurname}) Bas Herifi Boyuk olmalidi");
+                Console.WriteLine(targetSurname);
+                break;
             }
-            return surname;
+            else if (targetSurname.Length > 20 || targetSurname.Length <= 2)
+            {
+                Console.WriteLine($"Soyadinizin ({targetSurname}) Uzunluqu sehfdir");
+                Console.WriteLine(targetSurname);
+                break;
+            }
         }
+        return targetSurname;
     }
+    public static string Father(string targetFatherName)
+    {
+        char[] TargetSmallLetter = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
+                'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+
+        for (int i = 0; i < TargetSmallLetter.Length; i++)
+        {
+            if (targetFatherName[0] == TargetSmallLetter[i])
+            {
+                Console.WriteLine($"Adin ({targetFatherName}) Bas Herfi Boyuk Olmalidir");
+                Console.WriteLine(targetFatherName);
+                break;
+            }
+            else if (targetFatherName.Length > 20 || targetFatherName.Length <= 2)
+            {
+                Console.WriteLine($"Adin ({targetFatherName}) uzunluqu sehfdir");
+                Console.WriteLine(targetFatherName);
+                break;
+            }
+        }
+        return targetFatherName;
+    }
+    public static string Fincode(string FinCode)
+    {
+        char[] TargetSmallLetter = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
+                'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+
+        for (int i = 0; i < TargetSmallLetter.Length; i++)
+        {
+            if (FinCode.Length != TargetSmallLetter[i])
+            {
+                Console.WriteLine($"Fincodun ({FinCode}) Butun Herifleri Boyuk Olmalidir");
+                Console.WriteLine(FinCode);
+                break;
+            }
+            else if (FinCode.Length == 7)
+            {
+                
+                Console.WriteLine($"Fincodunuzun ({FinCode}) uzunluqu sehfdir (7 e Beraber olmalidir)");
+                Console.WriteLine(FinCode);
+                break;
+            }
+        }
+        return FinCode;
+    }
+
 }
